@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block heading %}{{ 'Create your workspace account' if mode=='register' else 'Welcome back' }}{% endblock %}
+{% block content %}
+<div class="auth-wrap"><div class="auth-art glass"><div class="art-symbol">✦</div><h2>Your ideas,<br>one workspace.</h2><p>Keep creative tools and conversations together in a calm, glass-inspired interface.</p><div class="art-lines"></div></div>
+<div class="auth-card glass"><div class="eyebrow">{{ 'GET STARTED' if mode=='register' else 'SIGN IN' }}</div><h2>{{ 'Create account' if mode=='register' else 'Sign in to Omni' }}</h2><p class="muted">Use your workspace credentials to continue.</p>
+<form method="post" class="stack-form">
+{% if mode=='register' %}<label>Username<input name="username" required minlength="3" autocomplete="username" placeholder="Choose a username"></label><label>Email address<input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>{% else %}<label>Username or email<input name="identity" required autocomplete="username" placeholder="Username or email"></label>{% endif %}
+<label>Password<input type="password" name="password" required minlength="{{ 8 if mode=='register' else 1 }}" autocomplete="{{ 'new-password' if mode=='register' else 'current-password' }}" placeholder="{{ 'At least 8 characters' if mode=='register' else 'Your password' }}"></label>
+<button class="btn btn-primary btn-large full" type="submit">{{ 'Create account' if mode=='register' else 'Sign in securely' }} <span>→</span></button>
+</form><p class="auth-switch">{% if mode=='register' %}Already registered? <a href="{{ url_for('login') }}">Sign in</a>{% else %}New here? <a href="{{ url_for('register') }}">Create an account</a>{% endif %}</p>
+<p class="security-note">Passwords are securely hashed and are never shown in the admin panel. Never share your Gmail password.</p></div></div>
+{% endblock %}

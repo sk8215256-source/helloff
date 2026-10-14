@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block heading %}Everything, in one studio{% endblock %}
+{% block content %}
+<div class="hero glass">
+ <div class="hero-copy"><div class="pill"><span class="pulse"></span> ALL-IN-ONE WORKSPACE</div>
+ <h1>Create. Edit.<br><span>Make it happen.</span></h1>
+ <p>A Python-powered starting point for browser search, creative utilities, file sharing, and admin management — wrapped in a transparent liquid-glass interface.</p>
+ <div class="hero-actions"><a class="btn btn-primary btn-large" href="{{ url_for('tools_page') }}">Explore tools <span>↗</span></a><a class="btn btn-quiet btn-large" href="{{ url_for('browser') }}">Open search</a></div>
+ </div><div class="hero-orb"><div class="orb-core">✦</div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><span class="orb-tag tag-a">AI WORKSPACE</span><span class="orb-tag tag-b">CREATIVE STUDIO</span></div>
+</div>
+<div class="section-head"><div><div class="eyebrow">YOUR TOOLKIT</div><h2>Pick up where inspiration starts</h2></div><span class="muted">Modular by design</span></div>
+<div class="feature-grid">
+<a class="feature-card glass" href="{{ url_for('browser') }}"><div class="feature-icon purple">◎</div><h3>Browser & Search</h3><p>Search from the workspace, quick links, and a dedicated search screen.</p><span class="card-link">Open browser ↗</span></a>
+<a class="feature-card glass" href="{{ url_for('tools_page') }}"><div class="feature-icon blue">▧</div><h3>Photo & File Tools</h3><p>Starter utilities for image/PDF workflows and future editing modules.</p><span class="card-link">Explore tools ↗</span></a>
+<a class="feature-card glass" href="{{ url_for('chat') }}"><div class="feature-icon pink">◌</div><h3>Chat & File Sharing</h3><p>Send messages and share permitted files with signed-in workspace users.</p><span class="card-link">Open chat ↗</span></a>
+{% if current_user and current_user.is_admin %}<a class="feature-card glass" href="{{ url_for('admin') }}"><div class="feature-icon gold">⚙</div><h3>Admin Console</h3><p>Review accounts, manage roles, and monitor recent community messages.</p><span class="card-link">Manage studio ↗</span></a>{% else %}<a class="feature-card glass" href="{{ url_for('register') }}"><div class="feature-icon gold">＋</div><h3>Your Profile</h3><p>Create a workspace account and sign in to use protected features.</p><span class="card-link">Create account ↗</span></a>{% endif %}
+</div>
+<div class="notice glass"><span class="notice-icon">✧</span><div><strong>Built to grow</strong><p>This starter includes working account registration, password hashing, admin access, and chat uploads. Advanced video editing, AI integrations, cloud storage, and background removal need additional modules/API credentials.</p></div></div>
+{% endblock %}

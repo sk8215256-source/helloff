@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block heading %}{{ title }}{% endblock %}{% block content %}<div class="notice glass"><span class="notice-icon">ⓘ</span><div><h2>{{ title }}</h2><p>{{ message }}</p><a class="btn btn-primary" href="{{ url_for('home') }}">Back to dashboard</a></div></div>{% endblock %}
